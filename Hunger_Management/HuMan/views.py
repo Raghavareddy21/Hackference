@@ -20,6 +20,10 @@ def signup(request):
                 user=User.objects.get(username=form.cleaned_data.get('username')),
                 phone=form.cleaned_data.get('phone'),
                 ).save()
+                url = "https://api.backbuckle.io/v1/users/a31775d0-0078-11e9-afa7-03a269ea2160"
+                payload = "{\"country_code\":\"+91\",\"default_location\":{\"latitude\":0,\"longitude\":0},\"dob\":\"\",\"email\":\"\",\"first_name\":form.first_name,\"gender\":\"\",\"last_name\":form.last_name,\"password\":form.password1,\"phone_number\":form.phone,\"properties\":{\"key-1\":\"property-1\",\"key-2\":\"property-2\"},\"tags\":{\"key-1\":\"property-1\",\"key-2\":\"property-2\"},\"time_zone\":\"UTC -5\",\"user_customer_id\":\"2010C6PS627G\",\"user_name\":username}"
+                headers = {'content-type': 'application/json'}
+                response = requests.request("POST", url, data=payload, headers=headers)
                 return HttpResponse("user saved")
             else:
                 return render(request, 'signup.html', {'form': form})
