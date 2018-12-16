@@ -24,7 +24,7 @@ urlpatterns = [
 
 
 
-    path('index/',TemplateView.as_view(template_name='index.html'),name='index'),
+    path('',TemplateView.as_view(template_name='index.html'),name='index'),
     path('about/',TemplateView.as_view(template_name='about-us.html'),name='about'),
     path('maps/',TemplateView.as_view(template_name='maps.html'),name='maps'),
     path('geocoding/',TemplateView.as_view(template_name='geocoding.html'),name='geocodeing'),
