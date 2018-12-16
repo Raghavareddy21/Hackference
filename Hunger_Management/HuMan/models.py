@@ -9,6 +9,7 @@ class FoodDiscription(models.Model):
     expiry_date=models.DateTimeField(help_text="Please enter the date the food is expected to expire")
     lat=models.FloatField()
     lon=models.FloatField()
+    quantity=models.IntegerField(help_text="please enter how many number of people it can feed")
     type=models.CharField(max_length=7,choices=Types)
     def __str__(self):
         return self.name

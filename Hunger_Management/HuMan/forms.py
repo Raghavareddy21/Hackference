@@ -7,7 +7,7 @@ class DonateFood(forms.ModelForm):
     Type = forms.ChoiceField(choices=Types, widget=forms.RadioSelect())
     class Meta:
         model=models.FoodDiscription
-        fields=('name','cooking_date','expiry_date','Type')
+        fields=('name','cooking_date','expiry_date','Type','quantity')
 class Register(forms.Form):
     first_name = forms.CharField(label='First name',max_length=20, required=False, help_text='optional')
     last_name = forms.CharField(label='Last name',max_length=20, required=False, help_text='optional')

@@ -29,4 +29,5 @@ urlpatterns = [
     path('geocoding/',TemplateView.as_view(template_name='geocoding.html'),name='geocodeing'),
     path('login/',views.user_login,name="login"),
     path('logout/', views.user_logout, name="logout"),
+    path('collect/',TemplateView.as_view(template_name='collect.html'),name='collect'),
 ]

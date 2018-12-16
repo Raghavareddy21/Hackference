@@ -21,7 +21,7 @@ def signup(request):
                 phone=form.cleaned_data.get('phone'),
                 ).save()
                 url = "https://api.backbuckle.io/v1/users/a31775d0-0078-11e9-afa7-03a269ea2160"
-                payload = "{\"country_code\":\"+91\",\"default_location\":{\"latitude\":0,\"longitude\":0},\"dob\":\"\",\"email\":\"\",\"first_name\":form.first_name,\"gender\":\"\",\"last_name\":form.last_name,\"password\":form.password1,\"phone_number\":form.phone,\"properties\":{\"key-1\":\"property-1\",\"key-2\":\"property-2\"},\"tags\":{\"key-1\":\"property-1\",\"key-2\":\"property-2\"},\"time_zone\":\"UTC -5\",\"user_customer_id\":\"2010C6PS627G\",\"user_name\":username}"
+                payload = {"country_code": "+91","default_location": {"latitude": 0,"longitude": 0  }, "dob": "","email": "",  "first_name": form.first_name,  "gender":"",  "last_name":form.last_name ,"password":form.password1,  "phone_number": form.phone,"time_zone": "Asia/Kolkata",  "user_customer_id": "","user_name": "Idly"}
                 headers = {'content-type': 'application/json'}
                 response = requests.request("POST", url, data=payload, headers=headers)
                 return HttpResponse("user saved")
@@ -56,3 +56,18 @@ def user_logout(request):
     else:
         logout(request)
         return HttpResponse("You have successfully logged out :)")
+def Donate(request):
+    if request.user.is_authenticated:
+        if request.method=='POST':
+            form=forms.DonateFood(request.POST)
+            if form.is_valid():
+                form.save()
+                url = "https://api.backbuckle.io/v1/users/"
+                payload = {"country_code": "+91","default_location": {"latitude": 0,"longitude": 0  }, "dob": "","email": "",  "first_name": "",  "gender":"",  "last_name":"" ,"password":"",  "phone_number":"","time_zone": "Asia/Kolkata",  "user_customer_id": "","user_name": "Idly","properties":{"DOE":"","DOM":"","Quantity":""}}
+                headers = {
+                'Authorization': "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhY2NvdW50X2lkIjoiOGI3N2I2ZDAtZmZjYy0xMWU4LWI4ZjgtN2YwMWMwNjdiZTlhIiwicHJvamVjdF9pZCI6ImNjMWU2ODQwLWZmZDItMTFlOC1iOGY4LTdmMDFjMDY3YmU5YSIsImVudmlyb25tZW50X2lkIjoiY2MyMDhiMjAtZmZkMi0xMWU4LWI4ZjgtN2YwMWMwNjdiZTlhIiwiZGltZW5zaW9uX2lkIjoiY2MyZDgzNzAtZmZkMi0xMWU4LWI4ZjgtN2YwMWMwNjdiZTlhIiwiYXBpX2FjY2Vzc19sZXZlbCI6IlNFUlZFUiIsImtleV9pZCI6ImNjM2EyZGEwLWZmZDItMTFlOC1iOGY4LTdmMDFjMDY3YmU5YSIsImlzcyI6Im9qNldGaW9OR2RuQktDM1gyN1ZRWktZMHVOTVRWckhCIiwiaWF0IjoxNTQ0ODE0MTQ3fQ.5cb3mqoJzL7tofndcmwhVI6HbgQX7Ze7otYw6Dj3M9A",
+                'Content-Type': "application/json",
+                'cache-control': "no-cache",
+                'Postman-Token': "46bce5c4-b1ed-41b6-9d8e-fefed0b8461d"
+                }
+                response = requests.request("POST", url, data=payload, headers=headers)
