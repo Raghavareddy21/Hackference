@@ -1,12 +1,24 @@
-{% extends 'base.html' %}
+{% extends 'nav.html' %}
 
 {% block title %}Sign Up{% endblock %}
 
 {% block content %}
-  <h2>Sign up</h2>
-  <form method="post">
+</br></br></br></br></br></br></br>
+<div class="container">
+
+    <h4 style="color:red;text-align:center;">{{err}}</h4>
+  <div class="row">
+    <div class="col-md-4 offset-md-4 card">
+      <div class="card-header" style="background: #ffffff;"></span><h1><center>Signup</center></h1></div>
+      <div class="card-body">
+      <form method="post" action="">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Sign up</button>
   </form>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
 {% endblock %}
