@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import User
 # Create your models here.
 Types=(('V', 'Vegitarian'),('N', 'NonVegitarian'))
 class FoodDiscription(models.Model):
@@ -11,3 +12,6 @@ class FoodDiscription(models.Model):
     type=models.CharField(max_length=7,choices=Types)
     def __str__(self):
         return self.name
+class Otherdetail(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    phone = models.IntegerField()

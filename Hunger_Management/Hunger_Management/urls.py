@@ -16,16 +16,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic.base import TemplateView
+from HuMan import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
      path('accounts/', include('accounts.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
-
-
-
+    path('signup/',views.signup, name='signup'),
     path('',TemplateView.as_view(template_name='index.html'),name='index'),
     path('about/',TemplateView.as_view(template_name='about-us.html'),name='about'),
     path('maps/',TemplateView.as_view(template_name='maps.html'),name='maps'),
     path('geocoding/',TemplateView.as_view(template_name='geocoding.html'),name='geocodeing'),
+    path('login/',views.user_login,name="login"),
+    path('logout/', views.user_logout, name="logout"),
 ]
